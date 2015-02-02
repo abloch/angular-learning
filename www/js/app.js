@@ -1,7 +1,7 @@
 (function() {
 
 	var app = angular.module("angulearn",[]);
-	app.controller('MyController', function($scope) {
+	app.controller('PeopleCtrl', function($scope) {
 		$scope.people=[
 			{name:"Akiva"},
 			{name:"Justin"},
@@ -9,5 +9,12 @@
 			{name:"Yona"},
 		];
 		$scope.limiter = 3;
+	});
+
+	app.controller("PeopleAdderCtrl",function() {
+		this.name="";
+		this.submitter=function(people){
+			people.push({"name":this.name});
+		};
 	})
 })()
