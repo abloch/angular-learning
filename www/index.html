@@ -5,8 +5,11 @@
 	<script src="js/app.js"></script>
 </head>
 <body>
-<div ng-controller="MyController">
-		Hello {{myName}}!
+	<div ng-controller="MyController">
+		<ul ng-repeat="person in people">
+			<li>{{person.name}}</li>
+		</ul>
+	</div>
 </div>
 </body>
 </html>
