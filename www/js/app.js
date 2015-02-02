@@ -7,6 +7,7 @@
 			{name:"Justin"},
 			{name:"Uzi"},
 			{name:"Yona"},
-		]
+		];
+		$scope.limiter = 3;
 	})
 })()
