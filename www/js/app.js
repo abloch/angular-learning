@@ -8,13 +8,14 @@
 			{name:"Uzi"},
 			{name:"Yona"},
 		];
-		$scope.limiter = 3;
+		$scope.limiter = 8;
 	});
 
 	app.controller("PeopleAdderCtrl",function() {
 		this.name="";
 		this.submitter=function(people){
 			people.push({"name":this.name});
+			this.name="";
 		};
 	})
 })()

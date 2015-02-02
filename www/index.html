@@ -14,8 +14,9 @@
 	</div>
 	<form name="peopleAdderForm" ng-controller="PeopleAdderCtrl as adder" ng-submit="adder.submitter(people)">
 		<h1>new people adder</h1>
-		Name: <textarea ng-model="adder.name" cols="40" rows="1"></textarea>
-		<input type="submit" value="submit"/>
+		Name: <input type="text" ng-model="adder.name" cols="40" rows="1" required/>
+		<input type="submit" value="submit" id="submitBtn" ng-show="peopleAdderForm.$valid"/>
+		<!--div> from validity: {{ peopleAdderForm.$valid}}</div-->
 	</div>
 </div>
 </body>
