@@ -70,5 +70,6 @@ Vagrant.configure(2) do |config|
     sudo service nginx start
     sudo rm -rf /usr/share/nginx/www
     sudo ln -s /vagrant/www /usr/share/nginx/
+    sudo touch /etc/nginx/sites-enabled/default
   SHELL
 end
