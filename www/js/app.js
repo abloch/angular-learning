@@ -8,6 +8,9 @@
 			templateUrl: "people-adder.html",
 			controllerAs: "adder",
 			controller: function($scope){
+				this.submitter=function(){
+					// todo : add an http put
+				};
 				this.add=function(contactsCtrl){
 					contactsCtrl.push({"name":this.name,"email":this.email})
 					//window.console.log(contactsCtrl);
