@@ -1,6 +1,6 @@
 # learngular
 
-my learning experience with angular and vagrant
+my learning experience with angular and vagrant (http://campus.codeschool.com/courses/shaping-up-with-angular-js)
 
 ## installation
 1. install virtualbox
