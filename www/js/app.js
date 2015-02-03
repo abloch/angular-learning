@@ -23,13 +23,14 @@
 			templateUrl: "people-list.html",
 			controllerAs: "contacts",			
 			controller: function($scope) {
-				$scope.contacts=[];
+				$scope.list=[];
 				$scope.limiter = 7;	
 				$scope.http="";			
 				$scope.fetcher=function($scope)
 				{
 					$http.get("/jsons/contacts.json").success(function(data){
-						$scope.contacts=data.contacts;
+						window.console.log(data.contacts);
+						$scope.list=data.contacts;
 					});
 				},
 				$scope.fetcher($scope);
