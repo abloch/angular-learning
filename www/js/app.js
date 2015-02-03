@@ -8,29 +8,28 @@
 	];
 
 	var app = angular.module("phoneBook",[]);
-	app.controller('PeopleCtrl', function($scope) {
-		$scope.people=initialContacts;
-		$scope.limiter = 8;
+	app.controller('ContactsCtrl', function($scope) {
+		$scope.contacts=initialContacts;
+		$scope.limiter = 3;
 	});
 
-	app.controller("PeopleAdderCtrl",peopleAdderController);
-
-	function peopleAdderController() {
-		this.name="";
-		this.submitter=function(people){
-			people.push({"name":this.name});
+	app.controller("ContactAdderCtrl", function($scope){
+		this.add=function(contactsCtrl){
+			contactsCtrl.push({"name":this.name})
+			//window.console.log(contactsCtrl);
 			this.name="";
 		};
-	};
+		this.name="ha";
+	});
 
-	app.directive("peopleAdder",function(){
+	app.directive("contactAdder",function(){
 		return{
 			restrict: "E",
 			templateUrl: "people-adder.html",
 		};
 	});
 
-	app.directive("peopleList",function(){
+	app.directive("contacts",function(){
 		return {
 			restrict: "E",
 			templateUrl: "people-list.html",
