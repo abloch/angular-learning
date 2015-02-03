@@ -1,13 +1,6 @@
 (function() {
 
-	var initialContacts=[
-		{name:"Akiva",email:"akiva@gmail.com"},
-		{name:"Justin",email:"justin@gmail.com"},
-		{name:"Uzi",email:"uzi@gmail.com"},
-		{name:"Yona",email:"yona@gmail.com"},
-	];
-
-	var app = angular.module("phoneBook",[]);
+	var app = angular.module("phoneBook",[ ]);
 
 	app.directive("contactAdder",function(){
 		return{
@@ -24,15 +17,23 @@
 		};
 	});
 
-	app.directive("contacts",function(){
+	app.directive("contacts",["$http", function($http){
 		return {
 			restrict: "E",
 			templateUrl: "people-list.html",
-			controllerAs: "contacts",
+			controllerAs: "contacts",			
 			controller: function($scope) {
-				$scope.contacts=initialContacts;
-				$scope.limiter = 7;
+				$scope.contacts=[];
+				$scope.limiter = 7;	
+				$scope.http="";			
+				$scope.fetcher=function($scope)
+				{
+					$http.get("/jsons/contacts.json").success(function(data){
+						$scope.contacts=data.contacts;
+					});
+				},
+				$scope.fetcher($scope);
 			},
 		}
-	});
+	}]);
 })()
