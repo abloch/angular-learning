@@ -18,4 +18,11 @@
 			this.name="";
 		};
 	})
+
+	app.directive("people",function(){
+		return{
+			restrict: "E",
+			templateUrl: "people-template.html",
+		};
+	});
 })()
