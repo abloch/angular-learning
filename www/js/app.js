@@ -1,28 +1,40 @@
 (function() {
 
-	var app = angular.module("angulearn",[]);
+	var initialContacts=[
+		{name:"Akiva"},
+		{name:"Justin"},
+		{name:"Uzi"},
+		{name:"Yona"},
+	];
+
+	var app = angular.module("phoneBook",[]);
 	app.controller('PeopleCtrl', function($scope) {
-		$scope.people=[
-			{name:"Akiva"},
-			{name:"Justin"},
-			{name:"Uzi"},
-			{name:"Yona"},
-		];
+		$scope.people=initialContacts;
 		$scope.limiter = 8;
 	});
 
-	app.controller("PeopleAdderCtrl",function() {
+	app.controller("PeopleAdderCtrl",peopleAdderController);
+	function peopleAdderController() {
 		this.name="";
 		this.submitter=function(people){
 			people.push({"name":this.name});
 			this.name="";
 		};
-	})
+	};
 
-	app.directive("people",function(){
+	app.directive("peopleAdder",function(){
 		return{
 			restrict: "E",
-			templateUrl: "people-template.html",
+			templateUrl: "people-adder.html",
+			controller: peopleAdderController,
+			controllerAs: "PeopleAdderCtrl",
 		};
+	});
+
+	app.directive("peopleList",function(){
+		return {
+			restrict: "E",
+			templateUrl: "people-list.html",
+		}
 	});
 })()
