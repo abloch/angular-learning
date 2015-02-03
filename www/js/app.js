@@ -14,6 +14,7 @@
 	});
 
 	app.controller("PeopleAdderCtrl",peopleAdderController);
+
 	function peopleAdderController() {
 		this.name="";
 		this.submitter=function(people){
@@ -26,8 +27,6 @@
 		return{
 			restrict: "E",
 			templateUrl: "people-adder.html",
-			controller: peopleAdderController,
-			controllerAs: "PeopleAdderCtrl",
 		};
 	});
 
