@@ -67,9 +67,9 @@ Vagrant.configure(2) do |config|
   config.vm.provision "shell", inline: <<-SHELL
     sudo apt-get update
     sudo apt-get install -y nginx
+    sudo sed -i 's/rules/rules\\n\\t\\tsendfile off\;/' /etc/nginx/sites-enabled/default #fix nginx conf file for virtualbox
     sudo service nginx start
     sudo rm -rf /usr/share/nginx/www
     sudo ln -s /vagrant/www /usr/share/nginx/
-    sudo touch /etc/nginx/sites-enabled/default
   SHELL
 end
