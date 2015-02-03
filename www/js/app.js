@@ -25,12 +25,11 @@
 			controller: function($scope) {
 				$scope.list=[];
 				$scope.limiter = 7;	
-				$scope.http="";			
-				$scope.fetcher=function($scope)
+				$scope.fetcher=function(scope)
 				{
 					$http.get("/jsons/contacts.json").success(function(data){
 						window.console.log(data.contacts);
-						$scope.list=data.contacts;
+						scope.list=data.contacts;
 					});
 				},
 				$scope.fetcher($scope);
