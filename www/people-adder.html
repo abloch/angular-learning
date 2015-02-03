@@ -1,4 +1,4 @@
-	<form name="newContactForm" ng-controller="ContactAdderCtrl as adder" ng-submit="adder.add(contacts)">
+	<form name="newContactForm" ng-submit="adder.add(contacts)">
 		<b>Add new Contact:</b>
 		<div>Name: <input type="text" id="nameInput" ng-model="adder.name" cols="40" rows="1" required/></div>
 		<div ng-show="adder.name">Email: <input type="email" ng-model="adder.email" cols="40" rows="1" required/></div>
