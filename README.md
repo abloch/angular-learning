@@ -6,9 +6,9 @@ my learning experience with angular and vagrant (http://campus.codeschool.com/co
 1. install virtualbox
 2. install vagrant
 
-``vagrant box add hashicorp/precise32``
+3. ``vagrant box add hashicorp/precise32``
 
-``vagrant up``
+4. ``vagrant up``
 
-and see the code at http://localhost:8080
+5. and see the code at http://localhost:8080
 
