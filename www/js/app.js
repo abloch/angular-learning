@@ -1,25 +1,24 @@
 (function() {
 
 	var initialContacts=[
-		{name:"Akiva"},
-		{name:"Justin"},
-		{name:"Uzi"},
-		{name:"Yona"},
+		{name:"Akiva",email:"akiva@gmail.com"},
+		{name:"Justin",email:"justin@gmail.com"},
+		{name:"Uzi",email:"uzi@gmail.com"},
+		{name:"Yona",email:"yona@gmail.com"},
 	];
 
 	var app = angular.module("phoneBook",[]);
 	app.controller('ContactsCtrl', function($scope) {
 		$scope.contacts=initialContacts;
-		$scope.limiter = 3;
+		$scope.limiter = 7;
 	});
 
 	app.controller("ContactAdderCtrl", function($scope){
 		this.add=function(contactsCtrl){
-			contactsCtrl.push({"name":this.name})
+			contactsCtrl.push({"name":this.name,"email":this.email})
 			//window.console.log(contactsCtrl);
-			this.name="";
+			this.name="";this.email="";
 		};
-		this.name="ha";
 	});
 
 	app.directive("contactAdder",function(){
