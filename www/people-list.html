@@ -3,7 +3,7 @@
 	<table class="table">
 		<tr><th>Name</th><th>email</th></tr>
 		<tr ng-repeat="contact in contacts.list | limitTo: contacts.limiter">
-			<td>{{contact.name}}</td>
+			<td ng-click="contacts.logger(contact._id['$id'])">{{contact.name}}</td>
 			<td>{{contact.email}}</td>
 		</tr>
 		<pre ng-hide="1">

@@ -1,6 +1,6 @@
 (function() {
 
-	var app = angular.module("phoneBook",[ ]);
+	var app = angular.module("phoneBook",[ 'ngRoute']);
 	app.controller('contactsCtrl', ['$http','$scope', function($http,$scope){
 		this.submitter=function(){
 			$http.post("/api/contacts.php",{"name":this.name,"email":this.email});
@@ -18,7 +18,10 @@
 		{
 			this.name="";this.email="";
 		}
-
+		this.logger=function(thing)
+		{
+			window.console.log(thing);
+		}
 
 		// initializations
 		this.list=[];

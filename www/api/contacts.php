@@ -5,7 +5,7 @@ if ($_SERVER['REQUEST_METHOD']==="GET")
 	$arr = array();
 	$res = $db->contacts->find();
 	foreach ($res as $k=>$v)
-	{
+	{		
 		array_push($arr,$v);
 	}
 	echo json_encode($arr);
