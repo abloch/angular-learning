@@ -1,0 +1,8 @@
+#!/bin/bash
+sudo apt-get update
+sudo apt-get install -y apache2 libapache2-mod-php5 
+sudo apt-get install -y libsasl2-dev php-pear make mongodb #for pecl
+yes | sudo pecl install mongo  # install php mongo package
+sudo sh -c "echo 'extension=mongo.so' > /etc/php5/apache2/conf.d/mongo.ini" # configure it for apache
+sudo rm -rf /var/www && sudo ln -s /vagrant/www /var/www # setup apache to serve /vagrant/www instead of /var/www
+sudo service apache2 restart
