@@ -3,23 +3,22 @@
 	var app = angular.module("phoneBook",[ ]);
 	app.controller('contactsCtrl', ['$http','$scope', function($http,$scope){
 		this.submitter=function(){
-			$http.post("/api/contacts.php",this);
+			$http.post("/api/contacts.php",{"name":this.name,"email":this.email});
 		};
 		this.adder=function(){
-			window.console.log(this.list);
 			this.list.push({"name":this.name,"email":this.email})
-			window.console.log(this.list);
-			this.name="";this.email="";
 		};
 		this.fetcher=function()
 		{
 			$http.get("/api/contacts.php").success(function(data){
-				window.console.log(data);
-				window.console.log($scope.contacts.list);
 				$scope.contacts.list=data;
-				window.console.log($scope.contacts.list);				
 			});			
 		};
+		this.cleaner=function()
+		{
+			this.name="";this.email="";
+		}
+
 
 		// initializations
 		this.list=[];

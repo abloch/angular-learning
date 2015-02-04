@@ -1,10 +1,9 @@
-	<form name="newContactForm" ng-submit="contacts.adder()">
+	<form name="newContactForm" ng-submit="contacts.adder();contacts.submitter();contacts.cleaner()">
 		<b>Add new Contact:</b>
 		<div>Name: <input type="text" id="nameInput" ng-model="contacts.name" cols="40" rows="1" required/></div>
 		<div ng-show="contacts.name">Email: <input type="email" ng-model="contacts.email" cols="40" rows="1" required/></div>
 		<input type="submit" value="submit" id="submitBtn" ng-show="newContactForm.$valid" class="btn"/>
-		<input type="button" value="send" id="sendBtn" class="btn" ng-click="contacts.submitter()"/>
-		
+	
 		<!--div> form validity: {{newContactForm.$valid}}</div>
 		<div> name validity: {{contacts.name}}</div-->
 
