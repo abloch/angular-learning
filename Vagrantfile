@@ -66,10 +66,9 @@ Vagrant.configure(2) do |config|
   # documentation for more information about their specific syntax and use.
   config.vm.provision "shell", inline: <<-SHELL
     sudo apt-get update
-    sudo apt-get install -y nginx
-    sudo sed -i 's/rules/rules\\n\\t\\tsendfile off\;/' /etc/nginx/sites-enabled/default #fix nginx conf file for virtualbox
-    sudo service nginx start
-    sudo rm -rf /usr/share/nginx/www
-    sudo ln -s /vagrant/www /usr/share/nginx/
+    sudo apt-get install -y apache2 libapache2-mod-php5
+    sudo service apache2 start
+    sudo rm -rf /var/www
+    sudo ln -s /vagrant/www /var/www
   SHELL
 end

@@ -30,7 +30,7 @@
 				$scope.limiter = 7;	
 				$scope.fetcher=function()
 				{
-					$http.get("/jsons/contacts.json").success(function(data){
+					$http.get("/jsons/contacts.php").success(function(data){
 						window.console.log(data.contacts);
 						$scope.list=data.contacts;
 					});
