@@ -2,7 +2,12 @@
 require_once("db.inc");
 if ($_SERVER['REQUEST_METHOD']==="GET")
 {
-	$arr=iterator_to_array($db->contacts->find());
+	$arr = array();
+	$res = $db->contacts->find();
+	foreach ($res as $k=>$v)
+	{
+		array_push($arr,$v);
+	}
 	echo json_encode($arr);
 }
 elseif ($_SERVER['REQUEST_METHOD']==="POST") 
