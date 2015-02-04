@@ -2,14 +2,14 @@
 
 	var app = angular.module("phoneBook",[ ]);
 
-	app.directive("contactAdder",function(){
+	app.directive("contactAdder",["$http", function(){
 		return{
 			restrict: "E",
 			templateUrl: "people-adder.html",
 			controllerAs: "adder",
-			controller: function($scope){
+			controller: function($scope,$http){
 				this.submitter=function(){
-					// todo : add an http put
+					$http.post("/api/contacts.php",this);
 				};
 				this.add=function(contactsCtrl){
 					contactsCtrl.push({"name":this.name,"email":this.email})
@@ -18,7 +18,7 @@
 				};
 			}
 		};
-	});
+	}]);
 
 	app.directive("contacts",["$http", function($http){
 		return {
