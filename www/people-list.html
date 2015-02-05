@@ -1,5 +1,6 @@
 <div class="panel panel-default">
-	<div class="panel-heading">Contacts List</div>
+	<div ng-show="contacts.loading" class="alert alert-warning">loading...</div>
+	<div class="panel-heading" ng-show="contacts.list">Contacts List</div>
 	<table class="table">
 		<tr><th>Name</th><th>email</th></tr>
 		<tr ng-repeat="contact in contacts.list | limitTo: contacts.limiter">

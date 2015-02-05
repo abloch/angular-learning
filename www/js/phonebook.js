@@ -7,12 +7,15 @@
 		this.name="";this.email="";
 		this.limiter=12;
 		this.list=[];
+		this.loading=false;
 		this.contactsService=contactsService;
 		var that = this;
 		this.fetcher=function()
 		{
+			that.loading=true;
 			return this.contactsService.getList().then(function(newlist){
 				that.list=newlist.contacts;
+				that.loading=false;
 			});
 		};
 		this.fetcher();

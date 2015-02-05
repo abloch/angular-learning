@@ -8,6 +8,7 @@ if ($_SERVER['REQUEST_METHOD']==="GET")
 	{		
 		array_push($arr,$v);
 	}
+	sleep(2);
 	echo json_encode($arr);
 }
 elseif ($_SERVER['REQUEST_METHOD']==="POST") 
