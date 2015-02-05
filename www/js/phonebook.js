@@ -4,7 +4,7 @@
 	app.controller('contactsCtrl', ['contactsService','$scope', function(contactsService,$scope){
 
 		// initializations
-		this.name="";this.email="";
+		this.newguy={name:"",email:""};
 		this.limiter=12;
 		this.list=[];
 		this.loading=false;
@@ -18,6 +18,15 @@
 				that.loading=false;
 			});
 		};
+		this.adder=function(contact)
+		{
+			this.list.push(contact);
+			contactsService.submitter(this.newguy);
+		};
+		this.newGuyCleaner=function()
+		{
+			this.newguy={};
+		}
 		this.fetcher();
 		window.console.log(this.list);
 	}])

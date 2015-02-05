@@ -6,9 +6,6 @@ app.factory('contactsService',["$http","$q",function($http,$q){
 	contactsInstance.submitter=function(contact){
 		$http.post("/api/contacts.php",contact);
 	};
-	contactsInstance.adder=function(contact){
-		list.push(contact);
-	};
 	contactsInstance.fetcher=function()
 	{
 		var deferred = $q.defer();
