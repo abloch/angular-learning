@@ -4,7 +4,6 @@
 	app.controller('contactsCtrl', ['$http','$scope', function($http,$scope){
 
 		// initializations
-		window.console.log("init");
 		this.name="";this.email="";
 		this.list=[];this.limiter=12;
 		this.submitter=function(){
@@ -23,10 +22,6 @@
 		this.cleaner=function()
 		{
 			this.name="";this.email="";
-		}
-		this.logger=function(thing)
-		{
-			window.console.log(thing);
 		}
 		this.fetcher();	
 
