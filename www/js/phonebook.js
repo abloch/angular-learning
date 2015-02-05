@@ -1,30 +1,19 @@
 (function() {
 
-	var app = angular.module("phoneBook",[ 'ngRoute']);
-	app.controller('contactsCtrl', ['$http','$scope', function($http,$scope){
+	var app = angular.module("phoneBook",['ngRoute']);
+	app.controller('contactsCtrl', ['contactsService','$scope', function(contactsService,$scope){
 
 		// initializations
 		this.name="";this.email="";
-		this.list=[];this.limiter=12;
-		this.submitter=function(){
-			$http.post("/api/contacts.php",{"name":this.name,"email":this.email});
-		};
-		this.adder=function(){
-			this.list.push({"name":this.name,"email":this.email})
-		};
+		this.limiter=12;		
+		window.console.log("init CtctsCtrl");
+		this.contactsService=contactsService;
 		this.fetcher=function()
 		{
-			$http.get("/api/contacts.php").success(function(data){
-				window.console.log($scope.contacts.list);
-				$scope.contacts.list=data;
-			});			
-		};
-		this.cleaner=function()
-		{
-			this.name="";this.email="";
+			this.contactsService.fetcher();
+			list=this.contactsService.getList();
 		}
-		this.fetcher();	
-
+		this.fetcher();
 	}])
 
 	app.directive("contactAdder",function(){
