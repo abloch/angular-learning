@@ -5,14 +5,18 @@
 
 		// initializations
 		this.name="";this.email="";
-		this.limiter=12;		
-		window.console.log("init CtctsCtrl");
+		this.limiter=12;
+		this.list=[];
 		this.contactsService=contactsService;
+		var that = this;
 		this.fetcher=function()
 		{
-			this.list=this.contactsService.getList();
-		}
+			return this.contactsService.getList().then(function(newlist){
+				that.list=newlist.contacts;
+			});
+		};
 		this.fetcher();
+		window.console.log(this.list);
 	}])
 
 	app.directive("contactAdder",function(){

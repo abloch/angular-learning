@@ -1,8 +1,7 @@
 var app=angular.module("phoneBook");
 
-app.factory('contactsService',["$http",function($http){
+app.factory('contactsService',["$http","$q",function($http,$q){
 	var contactsInstance={};
-	var list=[];
 
 	contactsInstance.submitter=function(contact){
 		$http.post("/api/contacts.php",contact);
@@ -12,16 +11,19 @@ app.factory('contactsService',["$http",function($http){
 	};
 	contactsInstance.fetcher=function()
 	{
-		$http.get("/api/contacts.php").success(function(data){
-			list=data;
-		});			
+		var deferred = $q.defer();
+		$http.get("/api/contacts.php")
+		.success(function(data){
+			deferred.resolve({contacts:data});
+		}).error(function(msg,code){
+			window.console.log(msg);
+			deferred.reject(msg);
+		})
+		return deferred.promise;
 	};
 
-	contactsInstance.getList=function(){
-		window.console.log(list);
-		return list;
+	contactsInstance.getList=function(){		
+		return contactsInstance.fetcher().then(function (newlist){return newlist;});
 	}
-	contactsInstance.fetcher();
-	window.console.log("init ctctsSrv");
 	return contactsInstance;
 }]);
