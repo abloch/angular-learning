@@ -10,8 +10,7 @@
 		this.contactsService=contactsService;
 		this.fetcher=function()
 		{
-			this.contactsService.fetcher();
-			list=this.contactsService.getList();
+			this.list=this.contactsService.getList();
 		}
 		this.fetcher();
 	}])
