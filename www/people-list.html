@@ -3,14 +3,14 @@
 	<table class="table">
 		<tr><th>Name</th><th>email</th></tr>
 		<tr ng-repeat="contact in contacts.list | limitTo: contacts.limiter">
-			<td ng-click="contacts.logger(contact._id['$id'])">{{contact.name}}</td>
+			<td><a href="#/contact/{{contact._id['$id']}}">{{contact.name}}</td>
 			<td>{{contact.email}}</td>
 		</tr>
 		<pre ng-hide="1">
 			{{contacts.list}}
 		</pre>
 	</table>
-	first <input type="number" name="limit" min="1" max="10" ng-model="contacts.limiter"> contacts out of {{contacts.list.length}}<br/>
+	first <input type="number" name="limit" min="1" max="40" ng-model="contacts.limiter"> contacts out of {{contacts.list.length}}<br/>
 	<input type="button" class="btn" value="clear" ng-click="contacts.list=[]" />
 	<input type="button" class="btn" value="fetch" ng-click="contacts.fetcher()" />
 </div>
